@@ -1,0 +1,123 @@
+/* ========================================
+   RESQNET GLOBAL RESET
+======================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-width: 320px;
+
+    background: #111318;
+
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+}
+
+
+/* ========================================
+   PAGE
+======================================== */
+
+.dashboard {
+    width: 100%;
+
+    min-height: 100vh;
+
+    display: flex;
+
+    flex-direction: column;
+
+    background: #111318;
+}
+
+
+/* ========================================
+   NAVBAR + SIDEBAR + CONTENT
+======================================== */
+
+.dashboard-layout {
+    width: 100%;
+
+    flex: 1;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: stretch;
+
+    position: relative;
+}
+
+
+/* ========================================
+   SIDEBAR
+======================================== */
+
+.dashboard-layout > .sidebar {
+    width: 240px;
+
+    min-width: 240px;
+
+    flex: 0 0 240px;
+
+    margin: 0;
+
+    align-self: stretch;
+}
+
+
+/* ========================================
+   MAIN CONTENT
+======================================== */
+
+.dashboard-layout > .main-content {
+    flex: 1 1 auto;
+
+    min-width: 0;
+
+    width: auto;
+
+    margin: 0 !important;
+
+    padding: 28px;
+
+    position: relative;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+    .dashboard-layout > .sidebar {
+        display: none;
+    }
+
+    .dashboard-layout > .main-content {
+        width: 100%;
+
+        padding: 16px;
+    }
+}

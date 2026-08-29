@@ -1,0 +1,543 @@
+/* ========================================
+   RESQNET DASHBOARD ONLY
+======================================== */
+
+
+/* ========================================
+   DASHBOARD HEADER
+======================================== */
+
+.dashboard-header {
+    width: 100%;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.dashboard-header h1 {
+    margin: 0 0 6px;
+
+    color: #f8fafc;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+.dashboard-header p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 14px;
+}
+
+
+/* ========================================
+   SYSTEM STATUS
+======================================== */
+
+.system-status {
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 8px 13px;
+
+    background: #18201d;
+
+    border: 1px solid #263a30;
+
+    border-radius: 20px;
+
+    color: #86efac;
+
+    font-size: 13px;
+}
+
+
+.status-dot {
+    width: 8px;
+
+    height: 8px;
+
+    display: inline-block;
+
+    border-radius: 50%;
+
+    background: #22c55e;
+}
+
+
+/* ========================================
+   STATS
+======================================== */
+
+.stats-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.stat-card {
+    min-width: 0;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    padding: 20px;
+
+    background: #1a1d24;
+
+    border: 1px solid #2c3039;
+
+    border-radius: 12px;
+}
+
+
+.stat-icon {
+    width: 48px;
+
+    height: 48px;
+
+    flex: 0 0 48px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #242833;
+
+    border-radius: 10px;
+
+    font-size: 23px;
+}
+
+
+.stat-title {
+    margin: 0 0 5px;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.stat-value {
+    margin: 0;
+
+    color: #f8fafc;
+
+    font-size: 25px;
+
+    font-weight: 700;
+}
+
+
+/* ========================================
+   DASHBOARD SECTION
+======================================== */
+
+.dashboard-section {
+    width: 100%;
+
+    margin-bottom: 28px;
+
+    padding: 20px;
+
+    background: #171a20;
+
+    border: 1px solid #292d36;
+
+    border-radius: 14px;
+}
+
+
+.section-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 16px;
+}
+
+
+.section-header h2 {
+    margin: 0 0 4px;
+
+    color: #f8fafc;
+
+    font-size: 19px;
+}
+
+
+.section-header p {
+    margin: 0;
+
+    color: #7f8a9a;
+
+    font-size: 13px;
+}
+
+
+.section-count {
+    flex-shrink: 0;
+
+    padding: 6px 10px;
+
+    background: #242832;
+
+    border-radius: 8px;
+
+    color: #94a3b8;
+
+    font-size: 12px;
+}
+
+
+/* ========================================
+   MAP WRAPPER
+======================================== */
+
+.map-wrapper {
+    width: 100%;
+
+    height: 360px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+}
+
+
+/* ========================================
+   DISASTER MAP
+======================================== */
+
+.disaster-map {
+    position: relative;
+
+    width: 100%;
+
+    height: 360px;
+
+    overflow: hidden;
+
+    border-radius: 12px;
+
+    background: #20242c;
+}
+
+
+.disaster-map .leaflet-container {
+    width: 100% !important;
+
+    height: 360px !important;
+
+    min-height: 0 !important;
+
+    display: block;
+
+    border-radius: 12px;
+
+    z-index: 1;
+}
+
+
+/* ========================================
+   MAP LEGEND
+======================================== */
+
+.map-legend {
+    position: absolute;
+
+    right: 15px;
+
+    bottom: 15px;
+
+    z-index: 1000;
+
+    width: 105px;
+
+    padding: 11px 12px;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.96
+    );
+
+    border-radius: 9px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.2);
+}
+
+
+.map-legend strong {
+    display: block;
+
+    margin-bottom: 7px;
+
+    color: #111827;
+
+    font-size: 12px;
+}
+
+
+.map-legend div {
+    display: flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    margin: 5px 0;
+
+    color: #475569;
+
+    font-size: 11px;
+}
+
+
+.legend-dot {
+    width: 9px;
+
+    height: 9px;
+
+    flex-shrink: 0;
+
+    display: inline-block;
+
+    border-radius: 50%;
+}
+
+
+.legend-dot.low {
+    background: #22c55e;
+}
+
+
+.legend-dot.medium {
+    background: #f59e0b;
+}
+
+
+.legend-dot.high {
+    background: #f97316;
+}
+
+
+.legend-dot.critical {
+    background: #dc2626;
+}
+
+
+/* ========================================
+   RECENT INCIDENTS GRID
+======================================== */
+
+.incident-grid {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 16px;
+}
+
+
+/* ========================================
+   INCIDENT CARD
+======================================== */
+
+.incident-card {
+    min-width: 0;
+
+    padding: 18px;
+
+    background: #1d2027;
+
+    border: 1px solid #2e323c;
+
+    border-radius: 11px;
+}
+
+
+.incident-card h3 {
+    margin: 0 0 10px;
+
+    color: #f8fafc;
+
+    font-size: 16px;
+}
+
+
+.incident-description {
+    margin: 0 0 14px;
+
+    color: #a1aab8;
+
+    line-height: 1.55;
+
+    font-size: 13px;
+}
+
+
+.incident-info {
+    display: grid;
+
+    gap: 7px;
+}
+
+
+.incident-info p {
+    margin: 0;
+
+    color: #cbd5e1;
+
+    font-size: 12px;
+}
+
+
+.incident-info strong {
+    color: #f1f5f9;
+}
+
+
+/* ========================================
+   LOADING / ERROR / EMPTY
+======================================== */
+
+.dashboard-loading,
+.dashboard-empty,
+.dashboard-error {
+    width: 100%;
+
+    padding: 20px;
+
+    text-align: center;
+
+    border-radius: 10px;
+
+    color: #94a3b8;
+}
+
+
+.dashboard-error {
+    margin-bottom: 20px;
+
+    background: rgba(
+        220,
+        38,
+        38,
+        0.12
+    );
+
+    color: #fca5a5;
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 950px) {
+
+    .stats-grid {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+
+    .incident-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 650px) {
+
+    .dashboard-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .dashboard-header h1 {
+        font-size: 23px;
+    }
+
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+
+    .dashboard-section {
+        padding: 14px;
+    }
+
+
+    .map-wrapper,
+    .disaster-map,
+    .disaster-map .leaflet-container {
+        height: 300px !important;
+    }
+
+
+    .map-legend {
+        right: 10px;
+
+        bottom: 10px;
+    }
+
+}

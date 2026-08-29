@@ -1,0 +1,139 @@
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 240px;
+    min-height: calc(100vh - 70px);
+
+    background: #1f2937;
+    color: white;
+
+    padding: 25px 15px;
+
+    flex-shrink: 0;
+
+    box-sizing: border-box;
+}
+
+
+/* =========================
+   SIDEBAR TITLE
+========================= */
+
+.sidebar-title {
+    font-size: 19px;
+    font-weight: 700;
+
+    color: white;
+
+    padding: 0 12px;
+
+    margin-bottom: 30px;
+}
+
+
+/* =========================
+   MENU
+========================= */
+
+.sidebar-menu {
+    list-style: none;
+
+    padding: 0;
+    margin: 0;
+}
+
+
+/* =========================
+   MENU ITEM
+========================= */
+
+.sidebar-menu li {
+    margin-bottom: 6px;
+}
+
+
+/* =========================
+   LINKS
+========================= */
+
+.sidebar-link {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    width: 100%;
+
+    padding: 13px 12px;
+
+    border-radius: 8px;
+
+    color: #d1d5db;
+
+    text-decoration: none;
+
+    font-size: 14px;
+    font-weight: 500;
+
+    box-sizing: border-box;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+/* =========================
+   ICON
+========================= */
+
+.sidebar-link span:first-child {
+    width: 22px;
+
+    text-align: center;
+
+    font-size: 17px;
+}
+
+
+/* =========================
+   HOVER
+========================= */
+
+.sidebar-link:hover {
+    background: #374151;
+
+    color: white;
+}
+
+
+/* =========================
+   ACTIVE PAGE
+========================= */
+
+.sidebar-link.active {
+    background: #dc2626;
+
+    color: white;
+
+    font-weight: 600;
+}
+
+.sidebar-link.active:hover {
+    background: #b91c1c;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 650px) {
+
+    .sidebar {
+        display: none;
+    }
+
+}

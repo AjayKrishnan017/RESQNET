@@ -1,0 +1,197 @@
+.audit-header {
+    margin-bottom: 20px;
+}
+
+
+.audit-header h1 {
+    margin: 0 0 5px;
+
+    color: #f8fafc;
+}
+
+
+.audit-header p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+.audit-filters {
+    display: grid;
+
+    grid-template-columns:
+        minmax(200px, 1fr)
+        150px
+        150px
+        auto;
+
+    gap: 9px;
+
+    margin-bottom: 18px;
+
+    padding: 13px;
+
+    background: #1a1d24;
+
+    border: 1px solid #2d3139;
+
+    border-radius: 9px;
+}
+
+
+.audit-filters input,
+.audit-filters select {
+    padding: 9px;
+
+    border: 1px solid #343943;
+
+    border-radius: 6px;
+
+    background: #111318;
+
+    color: #f8fafc;
+}
+
+
+.audit-filters button {
+    padding: 9px 15px;
+
+    border: none;
+
+    border-radius: 6px;
+
+    background: #2563eb;
+
+    color: white;
+
+    cursor: pointer;
+}
+
+
+.audit-table-wrapper {
+    width: 100%;
+
+    overflow-x: auto;
+
+    border: 1px solid #292d36;
+
+    border-radius: 10px;
+}
+
+
+.audit-table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: #171a20;
+}
+
+
+.audit-table th,
+.audit-table td {
+    padding: 12px;
+
+    text-align: left;
+
+    border-bottom: 1px solid #292d36;
+
+    color: #cbd5e1;
+
+    font-size: 10px;
+}
+
+
+.audit-table th {
+    color: #64748b;
+
+    text-transform: uppercase;
+
+    font-size: 8px;
+}
+
+
+.audit-table td strong {
+    display: block;
+
+    color: #f8fafc;
+}
+
+
+.audit-table td small {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #64748b;
+
+    font-size: 8px;
+}
+
+
+.audit-action {
+    display: inline-block;
+
+    padding: 4px 6px;
+
+    border-radius: 5px;
+
+    font-size: 8px;
+
+    font-weight: 700;
+}
+
+
+.audit-action.create {
+    color: #86efac;
+}
+
+
+.audit-action.update {
+    color: #93c5fd;
+}
+
+
+.audit-action.delete {
+    color: #fca5a5;
+}
+
+
+.audit-action.deploy {
+    color: #c4b5fd;
+}
+
+
+.audit-action.release {
+    color: #fcd34d;
+}
+
+
+.audit-error,
+.audit-empty {
+    padding: 20px;
+
+    border-radius: 8px;
+
+    background: #171a20;
+
+    color: #94a3b8;
+}
+
+
+.audit-error {
+    color: #fca5a5;
+}
+
+
+@media (max-width: 800px) {
+
+    .audit-filters {
+        grid-template-columns:
+            1fr;
+    }
+
+}

@@ -1,0 +1,327 @@
+/* ========================================
+   RESPONDER ASSIGNMENT
+======================================== */
+
+.assignment-card {
+    width: 100%;
+
+    margin-top: 22px;
+
+    margin-bottom: 22px;
+
+    padding: 20px;
+
+    background: #1a1d24;
+
+    border: 1px solid #2d3139;
+
+    border-radius: 12px;
+}
+
+
+/* HEADER */
+
+.assignment-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 15px;
+
+    margin-bottom: 18px;
+}
+
+
+.assignment-header h2 {
+    margin: 0 0 5px;
+
+    color: #f8fafc;
+
+    font-size: 19px;
+}
+
+
+.assignment-header p {
+    margin: 0;
+
+    color: #94a3b8;
+
+    font-size: 13px;
+}
+
+
+.assignment-count {
+    flex-shrink: 0;
+
+    padding: 6px 10px;
+
+    background: #272b35;
+
+    border-radius: 7px;
+
+    color: #fca5a5;
+
+    font-size: 12px;
+}
+
+
+/* CONTROLS */
+
+.assignment-controls {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    gap: 12px;
+
+    margin-bottom: 22px;
+}
+
+
+.assignment-controls select {
+    width: 100%;
+
+    padding: 11px 12px;
+
+    background: #111318;
+
+    border: 1px solid #343943;
+
+    border-radius: 8px;
+
+    color: #f8fafc;
+
+    outline: none;
+}
+
+
+.deploy-button {
+    min-width: 120px;
+
+    padding: 10px 15px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #dc2626;
+
+    color: white;
+
+    cursor: pointer;
+
+    font-weight: 600;
+}
+
+
+.deploy-button:disabled {
+    opacity: 0.5;
+
+    cursor: not-allowed;
+}
+
+
+/* ASSIGNED */
+
+.assigned-team-section h3 {
+    margin: 0 0 12px;
+
+    color: #f8fafc;
+
+    font-size: 15px;
+}
+
+
+.assigned-team-grid {
+    display: grid;
+
+    gap: 10px;
+}
+
+
+.assigned-responder-card {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto
+        auto;
+
+    align-items: center;
+
+    gap: 12px;
+
+    padding: 13px;
+
+    background: #111318;
+
+    border: 1px solid #2d3139;
+
+    border-radius: 9px;
+}
+
+
+.assigned-responder-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background: #272b35;
+
+    border-radius: 8px;
+
+    font-size: 20px;
+}
+
+
+.assigned-responder-info {
+    min-width: 0;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 2px;
+}
+
+
+.assigned-responder-info strong {
+    color: #f8fafc;
+
+    font-size: 14px;
+}
+
+
+.assigned-responder-info span {
+    color: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+.deployed-badge {
+    padding: 5px 8px;
+
+    background: rgba(
+        249,
+        115,
+        22,
+        0.12
+    );
+
+    border-radius: 6px;
+
+    color: #fb923c;
+
+    font-size: 10px;
+
+    font-weight: 700;
+}
+
+
+.release-button {
+    padding: 7px 10px;
+
+    border: 1px solid #475569;
+
+    border-radius: 6px;
+
+    background: transparent;
+
+    color: #cbd5e1;
+
+    cursor: pointer;
+}
+
+
+.release-button:hover {
+    background: #272b35;
+}
+
+
+/* STATES */
+
+.assignment-error,
+.assignment-success,
+.assignment-loading,
+.no-assigned-team {
+    padding: 11px 12px;
+
+    margin-bottom: 15px;
+
+    border-radius: 7px;
+
+    font-size: 13px;
+}
+
+
+.assignment-error {
+    background: rgba(
+        220,
+        38,
+        38,
+        0.12
+    );
+
+    color: #fca5a5;
+}
+
+
+.assignment-success {
+    background: rgba(
+        34,
+        197,
+        94,
+        0.1
+    );
+
+    color: #86efac;
+}
+
+
+.assignment-loading,
+.no-assigned-team {
+    color: #94a3b8;
+
+    background: #111318;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 700px) {
+
+    .assignment-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+
+    .assignment-controls {
+        grid-template-columns: 1fr;
+    }
+
+
+    .assigned-responder-card {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr);
+    }
+
+
+    .deployed-badge,
+    .release-button {
+        grid-column: 2;
+    }
+
+}

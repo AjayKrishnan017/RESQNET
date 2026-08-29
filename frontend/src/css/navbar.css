@@ -1,0 +1,67 @@
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    width: 100%;
+    height: 70px;
+
+    background: #111827;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 0 30px;
+
+    border-bottom: 3px solid #dc2626;
+
+    box-sizing: border-box;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+
+    font-size: 22px;
+    font-weight: 700;
+
+    color: white;
+}
+
+.navbar-user {
+    display: flex;
+    align-items: center;
+
+    gap: 12px;
+
+    color: white;
+}
+
+.navbar-notification {
+    font-size: 18px;
+}
+
+.navbar-admin {
+    font-size: 15px;
+    font-weight: 600;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .navbar {
+        padding: 0 18px;
+    }
+
+    .navbar-brand {
+        font-size: 19px;
+    }
+
+    .navbar-admin {
+        font-size: 14px;
+    }
+}
