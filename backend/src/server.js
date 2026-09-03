@@ -1,7 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import cors from "cors";
-
 import http from "http";
 
 import {
@@ -61,6 +60,41 @@ dotenv.config();
 
 
 // ========================================
+// ALLOWED FRONTEND ORIGINS
+// ========================================
+//
+// Local:
+// http://localhost:5173
+//
+// Production:
+// https://your-vercel-site.vercel.app
+//
+// Render reads these from:
+//
+// FRONTEND_URLS=
+// http://localhost:5173,https://your-site.vercel.app
+//
+
+const allowedOrigins =
+    (
+        process.env.FRONTEND_URLS ||
+        "http://localhost:5173"
+    )
+        .split(",")
+        .map(
+            (origin) =>
+                origin.trim()
+        )
+        .filter(Boolean);
+
+
+console.log(
+    "🌐 Allowed frontend origins:",
+    allowedOrigins
+);
+
+
+// ========================================
 // EXPRESS APP
 // ========================================
 
@@ -71,11 +105,6 @@ const app =
 // ========================================
 // HTTP SERVER
 // ========================================
-//
-// Socket.IO needs a real HTTP server.
-// Therefore we use server.listen()
-// instead of app.listen().
-//
 
 const server =
     http.createServer(
@@ -93,8 +122,51 @@ const io =
         {
             cors: {
 
-                origin:
-                    "http://localhost:5173",
+                origin: (
+                    origin,
+                    callback
+                ) => {
+
+                    // Some non-browser clients
+                    // may not send an Origin header.
+
+                    if (!origin) {
+
+                        return callback(
+                            null,
+                            true
+                        );
+
+                    }
+
+
+                    if (
+                        allowedOrigins.includes(
+                            origin
+                        )
+                    ) {
+
+                        return callback(
+                            null,
+                            true
+                        );
+
+                    }
+
+
+                    console.log(
+                        "🚫 Socket.IO CORS blocked:",
+                        origin
+                    );
+
+
+                    return callback(
+                        new Error(
+                            "Socket.IO origin not allowed."
+                        )
+                    );
+
+                },
 
                 methods: [
                     "GET",
@@ -104,15 +176,14 @@ const io =
                     "DELETE"
                 ],
 
-                credentials:
-                    true
+                credentials: true
             }
         }
     );
 
 
 // Make Socket.IO available
-// inside controllers and middleware.
+// throughout the Express app.
 
 app.set(
     "io",
@@ -133,9 +204,6 @@ io.on(
             socket.id
         );
 
-
-        // Let frontend know
-        // real-time connection is ready.
 
         socket.emit(
             "connection:ready",
@@ -172,19 +240,80 @@ io.on(
 
 
 // ========================================
-// GLOBAL MIDDLEWARE
+// EXPRESS CORS
 // ========================================
 
 app.use(
     cors({
-        origin:
-            "http://localhost:5173",
+        origin: (
+            origin,
+            callback
+        ) => {
 
-        credentials:
-            true
+            // Requests such as Postman,
+            // curl or server-to-server
+            // might not send Origin.
+
+            if (!origin) {
+
+                return callback(
+                    null,
+                    true
+                );
+
+            }
+
+
+            if (
+                allowedOrigins.includes(
+                    origin
+                )
+            ) {
+
+                return callback(
+                    null,
+                    true
+                );
+
+            }
+
+
+            console.log(
+                "🚫 Express CORS blocked:",
+                origin
+            );
+
+
+            return callback(
+                new Error(
+                    "Origin not allowed by CORS."
+                )
+            );
+
+        },
+
+        credentials: true,
+
+        methods: [
+            "GET",
+            "POST",
+            "PUT",
+            "PATCH",
+            "DELETE",
+            "OPTIONS"
+        ],
+
+        allowedHeaders: [
+            "Content-Type",
+            "Authorization"
+        ]
     })
 );
 
+
+// ========================================
+// BODY PARSERS
+// ========================================
 
 app.use(
     express.json()
@@ -218,11 +347,6 @@ app.use(
 // ========================================
 // REAL-TIME SYSTEM UPDATE MIDDLEWARE
 // ========================================
-//
-// After successful data-changing requests,
-// tell connected clients that something
-// in RESQNET has changed.
-//
 
 app.use(
     (req, res, next) => {
@@ -302,11 +426,6 @@ app.use(
 // ========================================
 // AUDIT LOG MIDDLEWARE
 // ========================================
-//
-// Watches successful POST / PUT / PATCH / DELETE
-// operations and creates MongoDB audit records
-// and notifications.
-//
 
 app.use(
     auditMutationMiddleware
@@ -365,6 +484,8 @@ app.get(
             database:
                 "CONNECTED",
 
+            allowedOrigins,
+
             timestamp:
                 new Date()
                     .toISOString()
@@ -416,7 +537,7 @@ app.use(
 
 
 // ========================================
-// RESPONDER DEPLOYMENT
+// RESPONDER ASSIGNMENTS
 // ========================================
 
 app.use(
@@ -496,7 +617,7 @@ app.use(
 
 
 // ========================================
-// 404 API HANDLER
+// 404 HANDLER
 // ========================================
 
 app.use(
@@ -579,13 +700,12 @@ const startServer =
 
         try {
 
-            // Connect MongoDB first.
-
             await connectDB();
 
 
             server.listen(
                 PORT,
+                "0.0.0.0",
                 () => {
 
                     console.log(
@@ -601,11 +721,7 @@ const startServer =
                     );
 
                     console.log(
-                        `🌐 API: http://localhost:${PORT}`
-                    );
-
-                    console.log(
-                        `📡 Socket.IO: http://localhost:${PORT}`
+                        `🌐 PORT: ${PORT}`
                     );
 
                     console.log(
